@@ -223,13 +223,16 @@ __marimo__/
 
 # Project data
 # Raw datasets
-00_Data/00_Raw
+00_Data/00_Raw/*
+!00_Data/00_Raw/.gitkeep
 
 # Intermediate datasets
-00_Data/01_Interim
+00_Data/01_Interim/*
+!00_Data/01_Interim/.gitkeep
 
 # Processed datasets
-00_Data/02_Processed
+00_Data/02_Processed/*
+!00_Data/02_Processed/.gitkeep
 
 # Local secrets
 config.py

@@ -1,0 +1,9 @@
+# Interim data
+
+The interim dataset is stored locally only and not included in this repository due to file size.
+
+Folder structure:
+
+- 00_Raw
+- 01_Interim
+- 02_Processed
