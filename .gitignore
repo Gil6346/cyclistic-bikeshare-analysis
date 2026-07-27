@@ -216,3 +216,20 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ==================================
+# Project specific
+# ==================================
+
+# Project data
+# Raw datasets
+00_Data/00_Raw
+
+# Intermediate datasets
+00_Data/01_Interim
+
+# Processed datasets
+00_Data/02_Processed
+
+# Local secrets
+config.py
