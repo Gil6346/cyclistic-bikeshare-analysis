@@ -236,3 +236,9 @@ __marimo__/
 
 # Local secrets
 config.py
+
+# Images
+04_Images/01_Figures/*
+
+# Archive files
+0_Archive/*
