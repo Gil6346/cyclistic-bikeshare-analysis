@@ -19,7 +19,7 @@
 
 - The analysis used 12 months of Cyclistic historical trip data.
 - The analysis period is between June 2025 to May 2026.
-- The dataset contains 5.8 millions of valid trip records after
+- After cleaning, the analysis-ready-dataset contains 5.8 millions of valid trip records.
 
 ## Methodology
 Raw CSV files
