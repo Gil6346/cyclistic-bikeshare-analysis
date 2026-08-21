@@ -3,3 +3,4 @@ numpy>=2.0
 matplotlib>=3.10
 pyarrow>=20.0
 jupyter
+seaborn>=0.13.2
