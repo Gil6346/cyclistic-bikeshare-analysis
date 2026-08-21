@@ -118,7 +118,9 @@ Recommendations
 └── 04_EDA.ipynb
 
 20260820_Cyclistic_Business_Insight_Report.pdf
+
 README.md
+
 requirements.txt
 ## How to Reproduce
 1. Clone the repository.
