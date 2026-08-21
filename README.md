@@ -100,14 +100,21 @@ Recommendations
 - Git/GitHub
 ## Project Structure
 00_Data/
+
 ├── 00_Raw/
+
 ├── 01_Interim/
+
 └── 02_Processed/
 
 01_Notebooks/
+
 ├── 01_import_merge.ipynb
+
 ├── 02_cleaning.ipynb
+
 ├── 03_feature_engineering.ipynb
+
 └── 04_EDA.ipynb
 
 20260820_Cyclistic_Business_Insight_Report.pdf
