@@ -6,7 +6,7 @@
 
 > **The headline:** casual riders are not a different kind of customer. On weekends, members ride almost exactly like casual riders do. So Cyclistic should stop selling membership as a commuter product and sell it as **"one pass for your weekday trips and your weekend rides"**, launched in late spring at the lakefront stations where casual riders already are.
 
-📄 [Business insight report (PDF)](20260820_Cyclistic_Business_Insight_Report.pdf) · 📓 [EDA notebook](01_Notebooks/04_eda.ipynb)
+📄 [Business insight report (PDF)](20261125_Cyclistic_Business_Insight_Report.pdf) · 📓 [EDA notebook](01_Notebooks/04_eda.ipynb)
 
 ---
 
