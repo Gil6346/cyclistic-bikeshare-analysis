@@ -36,7 +36,7 @@
 
 ![Top start stations by rider type](04_images/01_Figures/03_top_start_stations.png)
 
-- All of casual riders' top 10 start stations are at the lakefront or major attractions. **Navy Pier** alone had **38,837** casual rides, about 1.7 times the busiest member station (22,514).
+- All of casual riders' top 10 start stations are at the lakefront or major attractions. **Navy Pier** alone had **38,837** casual rides, about 1.7 times the busiest member station (Canal St & Madison St: 22,514 rides).
 - Members' top stations are in the business district on weekdays. At weekends, three lakefront stations (DuSable Lake Shore Dr & North Blvd, Theater on the Lake, Navy Pier) enter their top 10.
 
 **So what:** a small number of stations reaches a large share of casual riders, which makes a low-cost, measurable pilot possible.
