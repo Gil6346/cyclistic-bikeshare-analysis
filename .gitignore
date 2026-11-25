@@ -238,7 +238,7 @@ __marimo__/
 config.py
 
 # Images
-04_Images/01_Figures/Archive/*
+02_Images/Archive/*
 
 # Archive files
 0_Archive/*
