@@ -14,7 +14,7 @@
 
 ### 1. On weekends, members and casual riders ride the same way
 
-![Hourly ride pattern, weekday vs weekend](04_images/01_Figures/01_hourly_weekday_vs_weekend.png)
+![Hourly ride pattern, weekday vs weekend](02_images/01_hourly_weekday_vs_weekend.png)
 
 - On **weekdays**, members show a clear commuting pattern, with peaks at 8 AM and 5 PM.
 - On **weekends**, that pattern disappears. Member and casual riders follow almost the same curve, rising through the late morning and staying high until about 5 PM.
@@ -25,7 +25,7 @@
 
 ### 2. Casual demand is highly seasonal
 
-![Monthly rider mix](04_images/01_Figures/02_monthly_rider_mix.png)
+![Monthly rider mix](02_images/02_monthly_rider_mix.png)
 
 - Casual riders account for **43%** of rides in June, July and August, but only **18%** in January.
 - Members' monthly volumes vary too, but their daily pattern stays the same all year.
@@ -34,7 +34,7 @@
 
 ### 3. Casual riders are concentrated at a few lakefront stations
 
-![Top start stations by rider type](04_images/01_Figures/03_top_start_stations.png)
+![Top start stations by rider type](02_images/03_top_start_stations.png)
 
 - All of casual riders' top 10 start stations are at the lakefront or major attractions. **Navy Pier** alone had **38,837** casual rides, about 1.7 times the busiest member station (Canal St & Madison St: 22,514 rides).
 - Members' top stations are in the business district on weekdays. At weekends, three lakefront stations (DuSable Lake Shore Dr & North Blvd, Theater on the Lake, Navy Pier) enter their top 10.
