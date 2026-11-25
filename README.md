@@ -1,134 +1,104 @@
-# Cyclistic-Bikeshare-Analysis
+# Cyclistic Bike-Share: Turning Casual Riders into Members
 
-## Overview
+*last updated: 25/11/2026*
 
-- Google Data Analytics Professional Certificate Capstone Project.
-- This project analyses Cyclistic bike share usage to understand how annual members and casual riders use the service differently, with the aim of identifying opportunities to increase annual memberships.
+**Python (pandas, NumPy, matplotlib, seaborn) · 5.8 million trips · June 2025 – May 2026**
 
-## Project Status
+> **The headline:** casual riders are not a different kind of customer. On weekends, members ride almost exactly like casual riders do. So Cyclistic should stop selling membership as a commuter product and sell it as **"one pass for your weekday trips and your weekend rides"**, launched in late spring at the lakefront stations where casual riders already are.
 
-- Completed on 20/08/2026
+📄 [Business insight report (PDF)](20260820_Cyclistic_Business_Insight_Report.pdf) · 📓 [EDA notebook](01_Notebooks/04_eda.ipynb)
 
-## Business Task
+---
 
-- How do annual members and casual riders use Cyclistic bikes differently?
+## Key findings
 
-- The analysis focus on differences in temporal usage patterns, ride duration, seasonal trends and station usage patterns.
+### 1. On weekends, members and casual riders ride the same way
 
-## Dataset
+![Hourly ride pattern, weekday vs weekend](04_images/01_Figures/01_hourly_weekday_vs_weekend.png)
 
-- The analysis used 12 months of Cyclistic historical trip data.
-- The analysis period is between June 2025 to May 2026.
-- After cleaning, the analysis-ready-dataset contains 5.8 millions of valid trip records.
+- On **weekdays**, members show a clear commuting pattern, with peaks at 8 AM and 5 PM.
+- On **weekends**, that pattern disappears. Member and casual riders follow almost the same curve, rising through the late morning and staying high until about 5 PM.
+- Casual riders take **37.8%** of their rides at the weekend, compared with **23.6%** for members. At weekends, casual riders take **47%** of all rides, against 31% on weekdays.
+- Casual rides are longer (median **11.2 min** vs **8.6 min** for members).
 
-## Methodology
-Raw CSV files
+**So what:** members already use the service for leisure. The "membership = commuting" message leaves out how members actually ride, and it doesn't speak to casual riders at all.
 
-  ↓
+### 2. Casual demand is highly seasonal
 
-Import & Merge
+![Monthly rider mix](04_images/01_Figures/02_monthly_rider_mix.png)
 
-  ↓
+- Casual riders account for **43%** of rides in June, July and August, but only **18%** in January.
+- Members' monthly volumes vary too, but their daily pattern stays the same all year.
 
-Data Validation
+**So what:** the pool of casual riders to convert is largest in summer. A campaign has to be live before June, not during it.
 
-  ↓
+### 3. Casual riders are concentrated at a few lakefront stations
 
-Cleaning
+![Top start stations by rider type](04_images/01_Figures/03_top_start_stations.png)
 
-  ↓
+- All of casual riders' top 10 start stations are at the lakefront or major attractions. **Navy Pier** alone had **38,837** casual rides, about 1.7 times the busiest member station (22,514).
+- Members' top stations are in the business district on weekdays. At weekends, three lakefront stations (DuSable Lake Shore Dr & North Blvd, Theater on the Lake, Navy Pier) enter their top 10.
 
-Feature Engineering
+**So what:** a small number of stations reaches a large share of casual riders, which makes a low-cost, measurable pilot possible.
 
-  ↓
+---
 
-EDA
+## Recommendations
 
-  ↓
+| # | Recommendation | Evidence | How to measure it |
+|---|---|---|---|
+| 1 | **Reposition membership** as one pass for weekday trips *and* weekend leisure, not commuting only | Finding 1: members' weekend curve matches casual riders' | Conversion rate of casual riders exposed to the new message vs the old one |
+| 2 | **Launch in May**, ahead of the June–August peak | Finding 2: casual share of rides rises from 18% to 43% | Membership sign-ups in May–August vs the same period last year |
+| 3 | **Pilot at the top casual stations** on weekend afternoons (12–5 PM), with a matched control group of stations | Finding 3: Navy Pier, DuSable Lake Shore Dr & Monroe St, Michigan Ave & Oak St | Sign-ups at pilot stations vs control stations (A/B test) |
 
-Business Insights
+---
 
-  ↓
+## What makes this analysis reliable
 
-Recommendations
+A **rerunnable cleaning pipeline** across 12 monthly files (5,848,703 raw records → **5,842,803** clean):
 
-### Data Preparation
-- The 12 monthly datasets were combined into a single dataset, after validating schema consistency across all files.
-### Cleaning
-- Datetime fields were converted to datetime format.
-- Ride duration was introduced - calculated from start and end timestamps.
-- Records with duplicate ride IDs were removed.
-- Records with negative trip duration were removed.
-- Records last longer than 24 hours were removed, due to unusual patterns observed.
-- Records with missing start station or end station name were retained, station-level analysis was considered as a secondary analysis, the level of missingness was also documented as a limitation. 
-### Feature Engineering
-- Additional variables were derived to support temporal analysis, including ride date, month, day of week, hour of day, weekend status and time-of-day period.
-### Exploratory Data Analysis
-- Exploratory analysis compared annual members and casual riders across ride volume, ride duration, day of week, hour of day, weekend/weekday behaviour, bike type, monthly seasonality and starting-station patterns.
-- Aggregation such as count, proportions, mean and median ride duration were used to identify differences between rider groups.
-## Key Findings
-1. Distinct usage pattern
-- Members show stronger weekday commuting-like peaks, while casual riders show greater afternoon and weekend activity.
-2. Ride duration
-- Casual riders take longer trips on average than members.
-3. Weekend behaviour
-- Casual riders show substantially higher activity and longer ride duration on weekends.
-- Members' weekend usage becomes more similar to casual riders' afternoon-oriented pattern, suggesting membership does not imply commuter-like-only usage.
-4. Seasonality
-- Both rider groups show higher ride volumes during warmer months and substantially lower activity during winter.
-5. Station patterns
-- Casual riders' high volume stations are more concentrated around recreational areas and lakefront, while members' usage is more concentrated around downtown and mixed-use areas.
-## Business Recommendations
-1. Distinct usage occasions
-- Target casual riders during high usage weekend and afternoon periods and emphasise the flexibility of membership.
-2. Seasonality
-- Launch or increase membership campaigns ahead of and during warmer or high demand months.
-3. Spatial targeting
-- Prioritse high volume casual rider stations and nearby recreational destinations for targeted membership campaign tests and evaluate campaign performance.
+| Check | Records | Decision |
+|---|---|---|
+| Schema consistency across 12 files | 12 files | Validated before merging |
+| Duplicate ride IDs | 35 | Removed |
+| End time before start time | 29 | Removed |
+| Trips over 24 hours | 5,836 (0.10%) | **Investigated:** clustered at ~1,500 minutes, mostly missing end stations, classic bikes only. Treated as system artefacts and removed, with the rule documented |
+| Trips under 1 minute | 161,323 (2.76%) | Checked by rider type, bike type and location; retained |
+| Missing station names | ~21–22% of trips | Retained; station analysis treated as supporting evidence only |
+
 ## Limitations
-- Approximately 21-22% of station name information is missing.
-- Observational data does not establish causal relationships.
-- Rider intent and membership conversion are not directly observed.
-- Therefore, recommendations should be treated as hypotheses for targeted testing, rather than guaranteed drivers for membership conversion.
-## Tools
-- Python
-- pandas
-- NumPy
-- Matplotlib
-- seaborn
-- Jupyter Notebook
-- Git/GitHub
-## Project Structure
-00_Data/
 
-├── 00_Raw/
+- **Rides, not riders.** The data has no rider ID, so it can't show how many *people* are casual riders, how often the same person rides, or who later became a member. The recommendations are hypotheses to test, which is why each one has a measure.
+- About 21–22% of trips have no station name (slightly more for casual riders' end stations), so station results describe trips with a recorded station only.
+- The data is observational: it shows patterns, not causes.
+- No pricing data, so the analysis can't say whether membership would actually be cheaper for a given casual rider.
 
-├── 01_Interim/
+**With more data, the next step would be:** a rider ID to count repeat casual riders (the most likely converts), and pricing data to show each of them what membership would save.
 
-└── 02_Processed/
+---
 
+## Method
+
+Raw CSVs → import & merge → validation → cleaning → feature engineering (date, month, day of week, hour, weekend flag, time-of-day period) → EDA comparing members and casual riders by volume, duration, day, hour, season, bike type and station.
+
+## Project structure
+
+```
+00_Data/            raw, interim and processed data (not committed; see below)
 01_Notebooks/
-
-├── 01_import_merge.ipynb
-
-├── 02_cleaning.ipynb
-
-├── 03_feature_engineering.ipynb
-
-└── 04_EDA.ipynb
-
+  01_import_merge.ipynb
+  02_cleaning.ipynb
+  03_feature_engineering.ipynb
+  04_eda.ipynb
+images/             key charts used in this README
 20260820_Cyclistic_Business_Insight_Report.pdf
-
-README.md
-
 requirements.txt
-## How to Reproduce
-1. Clone the repository.
-2. Install the required Python packages listed in "requirements.txt".
-3. Download the original raw Cyclistic CSV files from [HERE](https://divvy-tripdata.s3.amazonaws.com/index.html).
-4. Unzip the folders and place the raw CSV files in "00_Data/00_Raw/".
-5. Run the notebooks in numberical order:
-- "01_import_merge.ipynb"
-- "02_cleaning.ipynb"
-- "03_feature_engineering.ipynb"
-- "04_eda.ipynb"
+```
+
+## How to reproduce
+
+1. Clone the repository and install the packages in `requirements.txt`.
+2. Download the 12 monthly trip files (June 2025 – May 2026) from the [Divvy trip data page](https://divvy-tripdata.s3.amazonaws.com/index.html), unzip them and place the CSVs in `00_Data/00_Raw/`.
+3. Run the notebooks in order, from `01_import_merge.ipynb` to `04_eda.ipynb`.
+
+*Data provided by Motivate International Inc. under the Divvy data licence, as part of the Google Data Analytics Professional Certificate capstone.*
